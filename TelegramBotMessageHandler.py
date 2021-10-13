@@ -171,36 +171,22 @@ async def process_question_1a(call: types.CallbackQuery, state: FSMContext):
                  'начале отношений. Тогда ещё на стадии выбора партнёра вы будете уверены, что выбираете себе самого ' \
                  'подходящего. '
             await bot.send_message(call.message.chat.id,text)
-            text='Вспомните, как вы выбирали себе текущего партнёра?\n\nА. По внутренним ощущениям - есть ли ' \
-                 'притяжение к партнёру, влечение, нравится ли внешность...\n\nВ. По общим интересам - есть ли о чём ' \
-                 'поговорить, есть ли общие шутки, весело ли вместе '
-            markup = types.InlineKeyboardMarkup()
-            markup.add(types.InlineKeyboardButton(text='A',callback_data='A'),types.InlineKeyboardButton(text='B', callback_data='B'))
-            await bot.send_message(call.message.chat.id, text, reply_markup=markup)
             await Form.next()
         elif call.data == 'B':
             text='Здорово! Часто при первых трудностях люди хотят всё бросить и начать новые отношения. Вы молодчина, ' \
                  'что хотите сохранить то, что уже создано.\nИногда в моменты кризиса с партнёром нужно вернуться на ' \
                  'точку "0" - а почему мы вообще вместе? Вернёмся назад. '
             await bot.send_message(call.message.chat.id, text)
-            text='Вспомните, как вы выбирали себе текущего партнёра?\n\nА. По внутренним ощущениям - есть ли ' \
-                 'притяжение к партнёру, влечение, нравится ли внешность...\n\nВ. По общим интересам - есть ли о чём ' \
-                 'поговорить, есть ли общие шутки, весело ли вместе '
-            markup=types.InlineKeyboardMarkup()
-            markup.add(types.InlineKeyboardButton(text='A',callback_data='A'),
-                       types.InlineKeyboardButton(text='B', callback_data='B'))
-            await bot.send_message(call.message.chat.id,text, reply_markup=markup)
             await Form.next()
-        else:
-            text = 'Представь, что ты сейчас выбираешь себе партнёра для будущих отношений. Как будешь ' \
-                   'выбирать?\n\nА. По внутренним ощущениям - есть ли притяжение к партнёру, влечение, нравится ли ' \
-                   'внешность...\n\nВ. По общим интересам - есть ли о чём поговорить, есть ли общие шутки, ' \
-                   'весело ли вместе '
-            markup=types.InlineKeyboardMarkup()
-            markup.add(types.InlineKeyboardButton(text='A',callback_data='A'),
-                       types.InlineKeyboardButton(text='B', callback_data='B'))
-            await bot.send_message(call.message.chat.id, text, reply_markup=markup)
-            await Form.next()
+        text = 'Представь, что ты сейчас выбираешь себе партнёра для будущих отношений. Как будешь ' \
+               'выбирать?\n\nА. По внутренним ощущениям - есть ли притяжение к партнёру, влечение, нравится ли ' \
+               'внешность...\n\nВ. По общим интересам - есть ли о чём поговорить, есть ли общие шутки, ' \
+               'весело ли вместе.'
+        markup=types.InlineKeyboardMarkup()
+        markup.add(types.InlineKeyboardButton(text='A',callback_data='A'),
+                   types.InlineKeyboardButton(text='B', callback_data='B'))
+        await bot.send_message(call.message.chat.id, text, reply_markup=markup)
+        await Form.next()
 
 
 @dp.callback_query_handler(state=Form.question_2)
@@ -214,7 +200,7 @@ async def process_question_2(call: types.CallbackQuery, state: FSMContext):
         if call.data == 'A':
             text = 'Такие отношения начинаются быстро, ярко и красиво... К сожалению, как правило и заканчиваются ' \
                    'также быстро - в ближайшие полгода-2 года. В худшем случае тянутся ещё дольше. В редких случаях ' \
-                   'по другим вопросам люди тоже совпадают, но это случайность, на которую я не советую расчитывать\n\n' \
+                   'по другим вопросам люди тоже совпадают, но это случайность, на которую я не советую рассчитывать\n\n' \
                    'А. Меня такой вариант устраивает, хочу экспериментировать над своей жизнью\n\n' \
                    'В. Меня такой вариант не устраивает, хочу построить долгосрочные отношения'
             markup=types.InlineKeyboardMarkup()
