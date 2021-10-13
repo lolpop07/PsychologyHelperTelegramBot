@@ -1,2 +1,2 @@
 # PsychologyHelperTelegramBot
- A telegram bot for Psychology professionals to collect costumer feedback
+ A telegram bot for Psychology professionals to collect user information
